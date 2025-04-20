@@ -19,3 +19,6 @@ build/
 dist/
 *.log
 
+
+TooSugary/TooSugary/venv
+
