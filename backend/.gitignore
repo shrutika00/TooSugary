@@ -1,2 +1,21 @@
 # Ignore the .env file containing sensitive information
 .env
+# Ignore virtual environment
+venv/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore package info folders
+*.dist-info/
+*.egg-info/
+*.pyd
+*.so
+*.dll
+
+# Optional: Ignore other temp/build stuff
+build/
+dist/
+*.log
+
