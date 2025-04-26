@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingMsg = addMessage("TooSugary", "<span class='loading'>...</span>");
 
     try {
-      const response = await fetch(BACKEND_URL, {
+      const response = await fetch(https://toosugary.onrender.com, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
