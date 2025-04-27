@@ -3,10 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const userInput = document.getElementById("userInput");
   const chatbox = document.getElementById("chatbox");
 
-  // Configure backend URL - switches based on where you're running
-  const BACKEND_URL = window.location.hostname.includes("localhost")
-    ? "http://localhost:5000/message"
-    : "https://toosugary.onrender.com/message";
+  // Configure backend URL - change if not running locally
+  const BACKEND_URL = "http://localhost:5000/message";
 
   sendBtn.addEventListener("click", sendMessage);
   userInput.addEventListener("keypress", (e) => {
@@ -19,26 +17,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addMessage("You", message);
     userInput.value = "";
-
+    
     // Show loading indicator
     const loadingMsg = addMessage("TooSugary", "<span class='loading'>...</span>");
 
     try {
-      const response = await fetch("https://toosugary.onrender.com/message",{
+      const response = await fetch(BACKEND_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Cache-Control": "no-store"
         },
         body: JSON.stringify({ message }),
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
-
+      
       const data = await response.json();
       chatbox.removeChild(loadingMsg);  // Remove loading
       addMessage("TooSugary", data.reply);
-
+      
     } catch (error) {
       console.error("Error:", error);
       chatbox.removeChild(loadingMsg);
