@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userInput = document.getElementById("userInput");
   const chatbox = document.getElementById("chatbox");
 
-  // Smart backend URL switching based on where you're running
+  // Configure backend URL - switches based on where you're running
   const BACKEND_URL = window.location.hostname.includes("localhost")
     ? "http://localhost:5000/message"
     : "https://toosugary.onrender.com/message";
@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingMsg = addMessage("TooSugary", "<span class='loading'>...</span>");
 
     try {
-      const response = await fetch(BACKEND_URL, {
+      const response = await fetch("https://toosugary.onrender.com/message",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Cache-Control": "no-store",
+          "Cache-Control": "no-store"
         },
         body: JSON.stringify({ message }),
       });
@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error("Network response was not ok");
 
       const data = await response.json();
-      chatbox.removeChild(loadingMsg); // Remove loading spinner
+      chatbox.removeChild(loadingMsg);  // Remove loading
       addMessage("TooSugary", data.reply);
 
     } catch (error) {
       console.error("Error:", error);
       chatbox.removeChild(loadingMsg);
-      addMessage("TooSugary", "Oops! Couldn't connect to the server. Try again later. 🚨");
+      addMessage("TooSugary", "Oops! Couldn't connect to the server. Try again later.");
     }
   }
 
