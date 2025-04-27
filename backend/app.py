@@ -17,9 +17,13 @@ genai.configure(api_key=api_key)
 MODEL_NAME = "models/gemini-1.5-pro-latest"
 model = genai.GenerativeModel(MODEL_NAME)
 
+
+
 @app.route('/')
 def home():
     return "Hey sugar! 🧷 TooSugary is up and running! Try sending a POST request to /message ✨"
+
+
 
 @app.route('/message', methods=['POST'])
 def handle_message():
