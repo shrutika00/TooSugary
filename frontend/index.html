@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TooSugary Bot</title>
 
-  <!-- Link your CSS and JS properly with Flask -->
+  <!-- Link your CSS properly -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+  <!-- Link your JS properly (ONLY if running Flask server!) -->
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 
   <style>
@@ -120,3 +122,4 @@
   </div>
 </body>
 </html>
+
